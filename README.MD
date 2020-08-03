@@ -18,5 +18,9 @@ Change to the directory `vintrace-code-challenge-java` and run `mvn clean packag
 ------
     java -cp target/exerciseone-1.0-SNAPSHOT.jar devproblem.WineTest
     
-    
-    
+
+## Output 
+------
+
+ ![image](https://user-images.githubusercontent.com/17228294/89143038-8911bc00-d58c-11ea-9053-54b24a778027.png)
+   
