@@ -27,11 +27,11 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     /**
-     * Handle javax.persistence.EntityNotFoundException
+     * Handle devproblem.exception.WineException
      */
     @ExceptionHandler(devproblem.exception.WineException.class)
     protected ResponseEntity<Object> handleEntityNotFound(devproblem.exception.WineException ex) {
-        return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, ex));
+        return buildResponseEntity(new ApiError(HttpStatus.NOT_FOUND, ex.getCode(), ex));
     }
 
 

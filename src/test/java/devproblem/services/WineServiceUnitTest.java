@@ -1,4 +1,4 @@
-package services;
+package devproblem.services;
 
 import devproblem.Wine;
 import devproblem.services.WineService;

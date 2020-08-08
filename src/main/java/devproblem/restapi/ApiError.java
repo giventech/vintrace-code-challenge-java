@@ -45,12 +45,10 @@ class ApiError {
     }
 
 
-    public ApiError(HttpStatus status, LocalDateTime timestamp, ErrorCode errorCode, String message, String debugMessage) {
+    public ApiError(HttpStatus status, ErrorCode errorCode,  Throwable ex) {
         this.status = status;
-        this.timestamp = timestamp;
         this.errorCode = errorCode;
-        this.message = message;
-        this.debugMessage = debugMessage;
+        this.debugMessage = ex.getLocalizedMessage();
     }
 
     public HttpStatus getStatus() {
