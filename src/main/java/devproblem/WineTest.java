@@ -2,7 +2,10 @@ package devproblem;
 
 
 import devproblem.util.Utils;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class WineTest {
 
 	public static void main(String[] args) {
@@ -27,6 +30,8 @@ public class WineTest {
 		System.out.println("\n");
 		Utils.printYearAndVarietyBreakdown(w);
 		System.out.println("\n");
+
+		SpringApplication.run(WineTest.class, args);
 	}
 
 

@@ -17,12 +17,17 @@ public class Wine implements Serializable {
 	private String tankCode;
 	private String productState;
 	private String ownerName;
-	
+
+	// Default constructor is needed by JackSon Library
+	public Wine(){
+
+	}
+
 	public Wine(String lotCode, double volume) {
 		this.lotCode = lotCode;
 		this.volume = volume;
 	}
-	
+
 	public Set<GrapeComponent> getComponents() {
 		return components;
 	}
@@ -78,5 +83,5 @@ public class Wine implements Serializable {
 	public void setComponents(Set<GrapeComponent> components) {
 		this.components = components;
 	}
-	
+
 }

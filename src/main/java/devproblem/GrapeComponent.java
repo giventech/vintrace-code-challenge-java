@@ -6,7 +6,13 @@ public class GrapeComponent {
 	private int year;
 	private String variety;
 	private String region;
-	
+
+	// Default constructor is needed by JackSon Library
+
+	public GrapeComponent(){
+
+	}
+
 	public GrapeComponent(double percentage, int year, String variety, String region) {
 		this.percentage = percentage;
 		this.year = year;

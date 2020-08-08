@@ -1,9 +1,16 @@
 package devproblem.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import devproblem.GrapeComponent;
 import devproblem.Tuple;
 import devproblem.Wine;
+import devproblem.exception.ErrorCode;
+import devproblem.exception.WineException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -12,7 +19,8 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
-public  final class Utils {
+public  class Utils {
+
     public static void printVarietyBreakdown(Wine w) {
 
         Map<String,Double> varietyBd =  w.getComponents().stream()
@@ -70,6 +78,19 @@ public  final class Utils {
                         + entry.getKey() + "\n");
             }
         }
+    }
+
+    public static Wine loadWineFromFile(String fileRelativePath) {
+        Resource resource =  new ClassPathResource(fileRelativePath);
+        ObjectMapper mapper = new ObjectMapper();
+        Wine wineConverted;
+        try {
+             wineConverted = mapper.readValue(resource.getFile(), Wine.class);
+        } catch (IOException e) {
+            throw new WineException(e.getMessage(), ErrorCode.FILE_LOAD_OR_ACCESS_ERRO);
+         }
+        return wineConverted;
+
     }
 
 }
