@@ -4,7 +4,7 @@ package devproblem;
 import java.util.Objects;
 
 //Tuple is used
-class Tuple implements Comparable<Tuple> {
+public class Tuple implements Comparable<Tuple> {
 
     @Override
     public boolean equals(Object o) {
