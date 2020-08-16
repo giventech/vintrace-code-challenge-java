@@ -30,14 +30,20 @@ public  class Utils {
         printMap(varietyBd);
     }
 
-    public static void printYearBreakdown(Wine w) {
+    public static Map <Integer, Double> getYearBreadown(Wine w) {
         TreeMap treeMap =  new TreeMap<Integer,Double>( w.getComponents().stream()
                 .collect(Collectors.groupingBy(GrapeComponent::getYear, Collectors.summingDouble(GrapeComponent::getPercentage))));
         Map<Integer, Double> otherTreeMap = new TreeMap<Integer, Double>(
                 Comparator.reverseOrder()
         );
         otherTreeMap.putAll(treeMap);
-        printMap(otherTreeMap);
+        return  otherTreeMap;
+
+    }
+
+    public static void printYearBreakdown(Wine w) {
+
+        printMap(Utils.getYearBreadown(w));
 
     }
 

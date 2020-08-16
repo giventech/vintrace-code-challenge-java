@@ -60,6 +60,8 @@ public class WineController {
             Wine loadedWine = wineService.loadWineFromFile(aWineId + ".json");
             if (compositionType.equals(CompositionType.REGION.getCompositionType())) {
                 return ResponseEntity.ok(Utils.getRegionBreakDown(loadedWine));
+            } else if (compositionType.equals(CompositionType.YEAR.getCompositionType())) {
+                return ResponseEntity.ok(Utils.getYearBreadown(loadedWine));
             }
         }
         throw new WineException("Wine composition break is invalid", ErrorCode.INVALID_BREAK_DOWN_FILTER);

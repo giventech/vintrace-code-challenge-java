@@ -59,6 +59,17 @@ public class WineRestControllerTest {
                 .andExpect(status().isOk());
 
     }
+    @Test
+    public void isShouldReturnOkForCompositionWithYears() throws Exception
+    {
+        when(wineServiceMock.loadWineFromFile(any(String.class))).thenReturn(mappedWine);
+        mvc.perform( MockMvcRequestBuilders
+                .get("/composition/YEAR/15MPPN002-VK")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+    }
 
     @Test
     public void itShouldReturnNotFound() throws Exception
