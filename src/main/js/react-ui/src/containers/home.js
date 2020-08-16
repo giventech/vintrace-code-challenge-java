@@ -12,29 +12,15 @@ export default function Home(props) {
     const numbers = props.numbers;
     const componsitionType = props.componsitionType;
     const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:  props.wineId;
-    console.log("wined id"+wineId);
+    
     const listItems = numbers?.map((number) =>
          <td>
              <Link to={`/details/${number}`}>{number}</Link> 
         </td>
        );
     return (
-        <>
 
-<Details numbers={listItems}
-            wineId={wineId}/>
-        {/* <div class="container">
-            <table className="table">
-                <tbody>
-                    <tr align="center">
-                    {listItems}
-                    </tr>
-                </tbody>
-            </table>
-         <Details numbers={listItems}
-            wineId={wineId}/>
-        </div> */}
-           
-        </>
+    <Details numbers={listItems}
+                wineId={wineId}/>
     )
   }

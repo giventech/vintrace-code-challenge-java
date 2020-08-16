@@ -59,11 +59,7 @@ return (
           <strong><label for="owner">Owner: </label></strong>
             <p id="owner">{wineDetail.wineDetail.ownerName}</p>
         </div>
-     
         </form>
-
-
-
         </>
         );
      } else {
