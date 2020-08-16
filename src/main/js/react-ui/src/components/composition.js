@@ -6,11 +6,16 @@ const Composition =  (props) => {
     const allFiles   = props.numbers;
     const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:  props.wineId;
     const compositionType  = !!(props?.match?.params?.compositionType) ? props?.match?.params?.compositionType: props.compositionType;
-     
+    
+    //details are passed down from the Details components
+    const lotCode  = props.location.state.id; 
     const {breakDown} = useGetCompositionBreakDown(compositionType, wineId);
-    console.log("This is the composition breakdown");
     console.log(breakDown.breakDown);
-    console.log("Composition");
+    console.log(props.location.state);
+    
+
+
+
     console.log(compositionType);
     const objectList =  Object.keys(breakDown.breakDown).map(key  =>{
        console.log( key);
@@ -26,12 +31,13 @@ const Composition =  (props) => {
 
     return (
         <>
+         {<h2>Lot code: {props.location.state.id}</h2> }
         <p><Link to={`/details/${wineId}`}>See details</Link></p>
-          {/* <div className="radio">
+          <div className="radio">
             <label>
               <input
                 type="radio"
-                value="year"
+                value="YEAR"
                 checked={this.state.selectedOption === "YEAR"}
                 onChange={this.onValueChange}
               />
@@ -42,14 +48,14 @@ const Composition =  (props) => {
             <label>
               <input
                 type="radio"
-                value="region"
+                value="REGION"
                 checked={this.state.selectedOption === "REGION"}
                 onChange={this.onValueChange}
               />
               Female
             </label>
           </div>
-          <div className="radio">
+          <div className="VARIETY">
             <label>
               <input
                 type="radio"
@@ -59,7 +65,7 @@ const Composition =  (props) => {
               />
               Other
             </label>
-          </div> */}
+          </div> 
 
 
         <table class="table">

@@ -16,6 +16,7 @@ const allFiles   = props.numbers;
 const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:props.wineId;
 const {wineDetail} = useGetWine(wineId)
 
+
 console.log("wineDetail.wineDetail.description" + wineDetail.wineDetail.description);
 const [descriptionFormValue, setDescriptionFormValue] = useState('')  ;
 
@@ -28,7 +29,10 @@ return (
 
         <>
         <h2>Lot code: {wineDetail.wineDetail.lotCode}</h2>
-        <p><Link to={`/composition/YEAR/${wineId}`}>Composition</Link></p>
+        <p><Link to={{
+                      pathname:`/composition/YEAR/${wineId}`,
+                      state: wineDetail
+                    }}>Composition</Link></p>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
             <strong><label for="description">Description: </label></strong>

@@ -9,9 +9,11 @@ import Details from "./components/details";
 
 
 
-export default function App() {
+export default function App(props) {
 
   const files = ['11YVCHAR001', '11YVCHAR002', '15MPPN002-VK'];
+  console.log("Intial props   ");
+  console.log(props);
   const listItems = files?.map((number) =>
   <td>
       <Link to={`/details/${number}`}>{number}</Link> 
