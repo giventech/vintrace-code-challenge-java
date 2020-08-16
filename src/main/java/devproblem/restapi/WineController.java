@@ -1,7 +1,12 @@
 package devproblem.restapi;
 
+import devproblem.GrapeComponent;
 import devproblem.Wine;
+import devproblem.exception.ErrorCode;
+import devproblem.exception.WineException;
+import devproblem.model.CompositionType;
 import devproblem.services.WineService;
+import devproblem.util.Utils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -10,21 +15,24 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class WineController {
 
     @Autowired
     WineService wineService;
+    int i;
 
-
-    @Operation(summary = "Login AOS", description = "Validate customer details", tags = {"Login AOS"})
+    @Operation(summary = "Response code ", description = "Get wine content", tags = {"load wine from profile"})
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Success", content = {@Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = Wine.class))}),
             @ApiResponse(responseCode = "400", description = "Bad request", content = {@Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = ApiError.class))}),
@@ -32,10 +40,30 @@ public class WineController {
             @ApiResponse(responseCode = "404", description = "Not found", content = {@Content(mediaType = APPLICATION_JSON_VALUE)}),
             @ApiResponse(responseCode = "422", description = "Unprocessable entity", content = {@Content(mediaType = APPLICATION_JSON_VALUE)}),
     })
-    @GetMapping("/wine/{wineId}")
+    @GetMapping("/details/{aWineId}")
     @ResponseBody
-    public ResponseEntity<Wine> getWineComponent(@PathVariable String wineId) {
-        Wine loadedWine = wineService.loadWineFromFile(wineId +".json");
+    public ResponseEntity<Wine> getWineComponent(@PathVariable String aWineId) {
+        Wine loadedWine = wineService.loadWineFromFile(aWineId + ".json");
         return ResponseEntity.ok(loadedWine);
     }
-}
+
+
+    @GetMapping("/composition/{compositionType}/{aWineId}")
+    @ResponseBody
+    public ResponseEntity<Map<?, ?>> getComposition(@PathVariable String compositionType, @PathVariable String aWineId) {
+
+
+        //Checks whether the type exists
+        Optional<CompositionType> optionalCompositionType = Arrays.stream(CompositionType.values()).filter(value -> value.getCompositionType().equals(compositionType)).findAny();
+        if (optionalCompositionType.isPresent()) {
+
+            Wine loadedWine = wineService.loadWineFromFile(aWineId + ".json");
+            if (compositionType.equals(CompositionType.REGION.getCompositionType())) {
+                return ResponseEntity.ok(Utils.getRegionBreakDown(loadedWine));
+            }
+        }
+        throw new WineException("Wine composition break is invalid", ErrorCode.INVALID_BREAK_DOWN_FILTER);
+        }
+    }
+
+

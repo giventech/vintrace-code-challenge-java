@@ -4,3 +4,9 @@
 
 # Maven
 /target
+
+# React package
+
+/src/main/js/react-ui/build/
+/src/main/js/react-ui/node/
+/src/main/js/react-ui/node_modules/

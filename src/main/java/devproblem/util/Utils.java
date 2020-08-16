@@ -6,7 +6,6 @@ import devproblem.Tuple;
 import devproblem.Wine;
 import devproblem.exception.ErrorCode;
 import devproblem.exception.WineException;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -43,13 +42,19 @@ public  class Utils {
     }
 
     public static void printRegionBreakdown(Wine w) {
+
+        printMap(Utils.getRegionBreakDown(w));
+    }
+
+    public static Map <String,Double> getRegionBreakDown(Wine w) {
         Map <String,Double> regionBd;
         regionBd = w.getComponents().stream()
                 .collect(Collectors.groupingBy(GrapeComponent::getRegion, Collectors.summingDouble(GrapeComponent::getPercentage)))
                 .entrySet().stream()
                 .sorted( Map.Entry.<String, Double>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        printMap(regionBd);
+        return regionBd;
+
     }
 
     public static void printYearAndVarietyBreakdown(Wine w) {

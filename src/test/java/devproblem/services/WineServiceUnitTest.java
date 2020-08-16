@@ -62,4 +62,6 @@ public class WineServiceUnitTest {
         assert ( wine != null);
         assert ( wine.getComponents() != null);
     }
+
+
 }

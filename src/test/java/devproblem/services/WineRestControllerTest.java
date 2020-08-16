@@ -49,12 +49,37 @@ public class WineRestControllerTest {
     }
 
     @Test
-    public void getWine() throws Exception
+    public void isShouldReturnOk() throws Exception
     {
-
         when(wineServiceMock.loadWineFromFile(any(String.class))).thenReturn(mappedWine);
         mvc.perform( MockMvcRequestBuilders
-                .get("/wine/11YVCHAR001")
+                .get("/composition/REGION/15MPPN002-VK")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk());
+
+    }
+
+    @Test
+    public void itShouldReturnNotFound() throws Exception
+    {
+        when(wineServiceMock.loadWineFromFile(any(String.class))).thenReturn(mappedWine);
+        mvc.perform( MockMvcRequestBuilders
+                .get("/composition/REGIONRRR/15MPPN002-VK")
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.debugMessage").exists())
+                .andExpect(jsonPath("$.debugMessage").isNotEmpty());
+    }
+
+
+    @Test
+    public void itShoudReturnSomeComponents() throws Exception
+    {
+        when(wineServiceMock.loadWineFromFile(any(String.class))).thenReturn(mappedWine);
+        mvc.perform( MockMvcRequestBuilders
+                .get("/details/11YVCHAR001")
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -63,7 +88,6 @@ public class WineRestControllerTest {
     }
 
 
-
-}
+    }
 
 
