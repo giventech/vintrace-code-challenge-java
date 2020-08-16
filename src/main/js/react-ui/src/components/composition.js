@@ -10,8 +10,8 @@ const Composition =  (props) => {
     const {breakDown} = useGetCompositionBreakDown(compositionType, wineId);
     console.log("This is the composition breakdown");
     console.log(breakDown.breakDown);
-    
-   
+    console.log("Composition");
+    console.log(compositionType);
     const objectList =  Object.keys(breakDown.breakDown).map(key  =>{
        console.log( key);
        console.log( breakDown.breakDown[key]);

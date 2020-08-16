@@ -18,8 +18,6 @@ export default function Home(props) {
              <Link to={`/details/${number}`}>{number}</Link> 
         </td>
        );
-
-    
     return (
         <>
 

@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
 
-export const API_URL = 'http://localhost:8080/composition/'
+export const API_URL = 'http://localhost:8080'
 export default function useGetCompositionBreakDown(compositionType, wineId) {
 
     const initialUserState = {
@@ -14,7 +14,7 @@ export default function useGetCompositionBreakDown(compositionType, wineId) {
     useEffect(()=>{
         axios({
             method:'GET',
-            url:`${API_URL}${compositionType}/${wineId}`,
+            url:`${API_URL}/composition/${compositionType}/${wineId}`,
 
         }).then(res =>{
             console.log('composition' + compositionType +'wine Id'+  wineId);

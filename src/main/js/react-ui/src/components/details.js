@@ -13,7 +13,7 @@ import Composition from './composition';
 const Details =  (props) => {
     
 const allFiles   = props.numbers;
-const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:  props.wineId;
+const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:props.wineId;
 const {wineDetail} = useGetWine(wineId)
 
 console.log("wineDetail.wineDetail.description" + wineDetail.wineDetail.description);
@@ -31,9 +31,6 @@ return (
         <p><Link to={`/composition/YEAR/${wineId}`}>Composition</Link></p>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
-   
-
-          
             <strong><label for="description">Description: </label></strong>
             <textarea type="text" 
                     id="description"
