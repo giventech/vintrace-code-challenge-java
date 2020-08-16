@@ -18,7 +18,7 @@ const Composition =  (props) => {
        <>   
        <tr>
           <td>{value}</td> 
-          <td>{key}</td> 
+          <td>{key}</td>
        </tr></>
       </>
     })
@@ -33,7 +33,7 @@ const Composition =  (props) => {
     return (
         <>
          {<h2>Lot code: {lotCode}</h2> }
-        <p><Link to={`/details/${wineId}`}>See details</Link></p>
+        <p><Link to={`/details/${wineId}`}>Show details</Link></p>
         <form>
 
         <div className="form-check form-check-inline">
@@ -41,40 +41,38 @@ const Composition =  (props) => {
                 value="YEAR"
                 checked={compositionTypeState === 'YEAR' }
                 onChange={onValueChange}/>
-            <label class="form-check-label" for="inlineRadio1">YEAR</label>
+            <label className="form-check-label" for="inlineRadio1">Year</label>
         </div>
         <div className="form-check form-check-inline">
             <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" 
                 value="REGION"
                 checked={compositionTypeState === 'REGION' }
                 onChange={onValueChange}/>
-            <label class="form-check-label" for="inlineRadio1">REGION</label>
+            <label className="form-check-label" for="inlineRadio1">Region</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" 
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" 
             value="VARIETY"
             checked={compositionTypeState === 'VARIETY' }
             onChange={onValueChange}/>
-          <label class="form-check-label" for="inlineRadio3">VARIETY</label>
+          <label className="form-check-label" for="inlineRadio3">Variety</label>
         </div>
 
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" 
+        <div className="form-check form-check-inline">
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" 
             value="YEAR_VARIETY"
             checked={compositionTypeState === 'YEAR_VARIETY' }
             onChange={onValueChange}/>
-          <label class="form-check-label" for="inlineRadio4">YEAR_VARIETY</label>
+          <label className="form-check-label" for="inlineRadio4">Year and variety</label>
         </div>
         </form>
 
 
-        <table class="table">
+        <table className="table">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th>%(Percent)</th>
+            <th>{compositionTypeState}</th>
           </tr>
         </thead>
         <tbody>

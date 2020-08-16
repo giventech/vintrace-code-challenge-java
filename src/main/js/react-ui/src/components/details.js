@@ -15,7 +15,6 @@ const Details =  (props) => {
 const allFiles   = props.numbers;
 const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:props.wineId;
 const {wineDetail} = useGetWine(wineId)
-console.log("wineDetail.wineDetail.description" + wineDetail.wineDetail.description);
 const [descriptionFormValue, setDescriptionFormValue] = useState('')  ;
 
 const handleSubmit = (event) => {
@@ -30,33 +29,33 @@ return (
         <p><Link to={{
                       pathname:`/composition/YEAR/${wineId}`,
                       state: wineDetail
-                    }}>Composition</Link></p>
+                    }}>Show composition</Link></p>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
-            <strong><label for="description">Description: </label></strong>
+            <strong><label htmlFor="description">Description: </label></strong>
             <textarea type="text" 
                     id="description"
-                    class="form-control"
+                    className="form-control"
                     value={descriptionFormValue?descriptionFormValue :wineDetail.wineDetail.description } 
                     onChange={e => setDescriptionFormValue(e.target.value)} />
         </div>
         <div className="form-group">
-        <strong><label for="volume">Volume: </label></strong>
+        <strong><label htmlFor="volume">Volume: </label></strong>
             <p id="volume">{wineDetail.wineDetail.volume}</p>
         </div>
 
         <div className="form-group">
-          <strong><label for="tank">Tank: </label></strong>
+          <strong><label htmlFor="tank">Tank: </label></strong>
             <p id="tank">{wineDetail.wineDetail.tankCode}</p>
         </div>
 
         <div className="form-group">
-          <strong><label for="productState">Product state: </label></strong>
+          <strong><label htmlFor="productState">Product state: </label></strong>
             <p id="productState">{wineDetail.wineDetail.productState}</p>
         </div>
 
         <div className="form-group">
-          <strong><label for="owner">Owner: </label></strong>
+          <strong><label htmlFor="owner">Owner: </label></strong>
             <p id="owner">{wineDetail.wineDetail.ownerName}</p>
         </div>
         </form>

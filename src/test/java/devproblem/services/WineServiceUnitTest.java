@@ -1,27 +1,17 @@
 package devproblem.services;
 
 import devproblem.Wine;
-import devproblem.services.WineService;
-import devproblem.services.WineServiceImpl;
-import devproblem.util.Utils;
 import org.junit.Test;
-import org.junit.Assert.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import static org.mockito.Mockito.*;
 
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -56,6 +46,7 @@ public class WineServiceUnitTest {
         assert ( wine != null);
         assert ( wine.getComponents() != null);
     }
+
     @Test
     public void WhenProvidedMPPN002ItShouldReturnAWineObject() throws IOException {
         Wine wine  = wineService.loadWineFromFile(MPPN002);

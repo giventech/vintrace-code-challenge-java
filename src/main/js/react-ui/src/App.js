@@ -23,7 +23,7 @@ export default function App(props) {
       // Home page display the left most wine detai
 
       <>
-      <div class="container">
+      <div className="container">
       <table className="table">
           <tbody>
               <tr align="center">

@@ -1,6 +1,5 @@
 package devproblem.restapi;
 
-import devproblem.GrapeComponent;
 import devproblem.Wine;
 import devproblem.exception.ErrorCode;
 import devproblem.exception.WineException;
@@ -13,14 +12,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -30,7 +27,6 @@ public class WineController {
 
     @Autowired
     WineService wineService;
-    int i;
 
     @Operation(summary = "Response code ", description = "Get wine content", tags = {"load wine from profile"})
     @ApiResponses(value = {
@@ -51,9 +47,6 @@ public class WineController {
     @GetMapping("/composition/{compositionType}/{aWineId}")
     @ResponseBody
     public ResponseEntity<Map<?, ?>> getComposition(@PathVariable String compositionType, @PathVariable String aWineId) {
-
-
-        //Checks whether the type exists
         Optional<CompositionType> optionalCompositionType = Arrays.stream(CompositionType.values()).filter(value -> value.getCompositionType().equals(compositionType)).findAny();
         if (optionalCompositionType.isPresent()) {
 
@@ -62,7 +55,11 @@ public class WineController {
                 return ResponseEntity.ok(Utils.getRegionBreakDown(loadedWine));
             } else if (compositionType.equals(CompositionType.YEAR.getCompositionType())) {
                 return ResponseEntity.ok(Utils.getYearBreadown(loadedWine));
-            }
+            } else if (compositionType.equals(CompositionType.VARIETY.getCompositionType())) {
+                return ResponseEntity.ok(Utils.getVarietyBreakdown(loadedWine));
+            }  else if (compositionType.equals(CompositionType.YEAR_VARIETY.getCompositionType())) {
+            return ResponseEntity.ok(Utils.getStringifiedYearAndVarietyBreakdown(loadedWine));
+        }
         }
         throw new WineException("Wine composition break is invalid", ErrorCode.INVALID_BREAK_DOWN_FILTER);
         }

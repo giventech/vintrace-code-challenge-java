@@ -15,13 +15,10 @@ export default function useGetCompositionBreakDown(compositionType, wineId) {
         axios({
             method:'GET',
             url:`${API_URL}/composition/${compositionType}/${wineId}`,
-
         }).then(res =>{
-            console.log('composition type has changed' + compositionType +'wine Id'+  wineId);
-            console.log(res.data);
             setBreakDown({breakDown: res.data,id:breakDown.id});
         })
-    },[compositionType, wineId]);
+    },[compositionType, wineId]); // we re load the state if compositionType or wineId change
     return {breakDown};
 }
 

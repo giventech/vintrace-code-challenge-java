@@ -9,6 +9,7 @@ import devproblem.exception.WineException;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import javax.rmi.CORBA.Util;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
@@ -20,37 +21,36 @@ import static java.util.stream.Collectors.groupingBy;
 
 public  class Utils {
 
-    public static void printVarietyBreakdown(Wine w) {
-
-        Map<String,Double> varietyBd =  w.getComponents().stream()
+    public static Map<String,Double>  getVarietyBreakdown(Wine w) {
+        return   w.getComponents().stream()
                 .collect(Collectors.groupingBy(GrapeComponent::getVariety, Collectors.summingDouble(GrapeComponent::getPercentage)))
                 .entrySet().stream()
                 .sorted( Map.Entry.<String, Double>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        printMap(varietyBd);
+
+    }
+
+    public static void printVarietyBreakdown(Wine w) {
+        printMap(Utils.getVarietyBreakdown(w));
     }
 
     public static Map <Integer, Double> getYearBreadown(Wine w) {
-        TreeMap treeMap =  new TreeMap<Integer,Double>( w.getComponents().stream()
+        TreeMap treeMap =  new TreeMap<Integer,Double>
+                ( w.getComponents().stream()
                 .collect(Collectors.groupingBy(GrapeComponent::getYear, Collectors.summingDouble(GrapeComponent::getPercentage))));
         Map<Integer, Double> otherTreeMap = new TreeMap<Integer, Double>(
                 Comparator.reverseOrder()
         );
+
         otherTreeMap.putAll(treeMap);
-        return  otherTreeMap;
+        return  treeMap;
 
     }
 
     public static void printYearBreakdown(Wine w) {
-
         printMap(Utils.getYearBreadown(w));
-
     }
 
-    public static void printRegionBreakdown(Wine w) {
-
-        printMap(Utils.getRegionBreakDown(w));
-    }
 
     public static Map <String,Double> getRegionBreakDown(Wine w) {
         Map <String,Double> regionBd;
@@ -63,15 +63,31 @@ public  class Utils {
 
     }
 
-    public static void printYearAndVarietyBreakdown(Wine w) {
-        Map <Tuple,Double> varietyBd = 	  w.getComponents().stream()
+    public static void printRegionBreakdown(Wine w) {
+        printMap(Utils.getRegionBreakDown(w));
+    }
+
+    public static Map <Tuple,Double>  getYearAndVarietyBreakdown(Wine w) {
+        return w.getComponents().stream()
                 .collect(groupingBy(post -> new Tuple(post.getYear(), post.getVariety()),
                         Collectors.summingDouble(GrapeComponent::getPercentage)))
                 .entrySet().stream()
                 .sorted( Map.Entry.<Tuple, Double>comparingByValue().reversed())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        printMap(varietyBd);
+    }
 
+    public static Map <String,Double>  getStringifiedYearAndVarietyBreakdown(Wine w) {
+         return Utils.getYearAndVarietyBreakdown(w).entrySet().stream()
+                .collect(Collectors.toMap(e -> new String(e.getKey().getYear()+", "+e.getKey().getVariety()), Map.Entry::getValue))
+               .entrySet().stream()
+               .sorted( Map.Entry.<String, Double>comparingByValue().reversed())
+               .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+
+    }
+
+
+    public static void printYearAndVarietyBreakdown(Wine w) {
+        printMap(Utils.getYearAndVarietyBreakdown(w));
     }
 
     //pretty print a map
