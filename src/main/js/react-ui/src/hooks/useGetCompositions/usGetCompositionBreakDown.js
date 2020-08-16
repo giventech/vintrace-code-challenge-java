@@ -17,7 +17,7 @@ export default function useGetCompositionBreakDown(compositionType, wineId) {
             url:`${API_URL}/composition/${compositionType}/${wineId}`,
 
         }).then(res =>{
-            console.log('composition' + compositionType +'wine Id'+  wineId);
+            console.log('composition type has changed' + compositionType +'wine Id'+  wineId);
             console.log(res.data);
             setBreakDown({breakDown: res.data,id:breakDown.id});
         })

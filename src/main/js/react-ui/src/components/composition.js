@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useGetCompositionBreakDown from '../hooks/useGetCompositions/usGetCompositionBreakDown';
 import { Link } from 'react-router-dom';
 
+
+
+
+
 const Composition =  (props) => {
     const allFiles   = props.numbers;
-    const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:  props.wineId;
-    const compositionType  = !!(props?.match?.params?.compositionType) ? props?.match?.params?.compositionType: props.compositionType;
-    
-    //details are passed down from the Details components
+    const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:  props.wineId;  
+    //lotCode is are passed down from the Details components (with the <Link)
     const lotCode  = props.location.state.id; 
-    const {breakDown} = useGetCompositionBreakDown(compositionType, wineId);
-    console.log(breakDown.breakDown);
-    console.log(props.location.state);
+    const compositionType  = !!(props?.match?.params?.compositionType) ? props?.match?.params?.compositionType: props.compositionType;
+    const [compositionTypeState, setCompositionTypeState] =  useState(compositionType)  ;
     
 
+    let  {breakDown} = useGetCompositionBreakDown(compositionTypeState, wineId);
 
-
+    console.log(breakDown.breakDown);
     console.log(compositionType);
     const objectList =  Object.keys(breakDown.breakDown).map(key  =>{
        console.log( key);
@@ -25,45 +27,51 @@ const Composition =  (props) => {
     //     <td> {breakDown[key]}</td> 
     //   </tr>
     });
+
+    const  onValueChange = (event) => {
+      setCompositionTypeState(event.target.value);
+    }
     
     console.log(objectList);
-
+     
+    
 
     return (
         <>
-         {<h2>Lot code: {props.location.state.id}</h2> }
+         {<h2>Lot code: {lotCode}</h2> }
         <p><Link to={`/details/${wineId}`}>See details</Link></p>
           <div className="radio">
-            <label>
+            <label className="radio-inline">
               <input
                 type="radio"
                 value="YEAR"
-                checked={this.state.selectedOption === "YEAR"}
-                onChange={this.onValueChange}
+                checked={compositionTypeState === 'YEAR' }
+                defaultChecked={true} 
+                onChange={onValueChange}
               />
-              Male
+              YEAR
             </label>
           </div>
           <div className="radio">
-            <label>
+          <label className="radio-inline">
               <input
                 type="radio"
                 value="REGION"
-                checked={this.state.selectedOption === "REGION"}
-                onChange={this.onValueChange}
+                checked={compositionTypeState === 'REGION'}
+                onChange={onValueChange}
               />
-              Female
+              REGION
             </label>
           </div>
-          <div className="VARIETY">
-            <label>
+          <div className="radio">
+          <label className="radio-inline">
               <input
                 type="radio"
-                value="variety"
-                checked={this.state.selectedOption === "VARIETY"}
-                onChange={this.onValueChange}
+                value="VARIETY"
+                checked={compositionTypeState === 'VARIETY'}
+                onChange={onValueChange}
               />
-              Other
+              VARIETY
             </label>
           </div> 
 

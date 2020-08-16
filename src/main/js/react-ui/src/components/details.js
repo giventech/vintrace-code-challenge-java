@@ -15,8 +15,6 @@ const Details =  (props) => {
 const allFiles   = props.numbers;
 const wineId  = !!(props?.match?.params?.id) ? props?.match?.params?.id:props.wineId;
 const {wineDetail} = useGetWine(wineId)
-
-
 console.log("wineDetail.wineDetail.description" + wineDetail.wineDetail.description);
 const [descriptionFormValue, setDescriptionFormValue] = useState('')  ;
 
@@ -39,7 +37,7 @@ return (
             <textarea type="text" 
                     id="description"
                     class="form-control"
-                    value={descriptionFormValue} 
+                    value={descriptionFormValue?descriptionFormValue :wineDetail.wineDetail.description } 
                     onChange={e => setDescriptionFormValue(e.target.value)} />
         </div>
         <div className="form-group">

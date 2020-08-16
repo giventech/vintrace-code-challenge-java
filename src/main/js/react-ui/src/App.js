@@ -36,7 +36,7 @@ export default function App(props) {
           <Route exact path="/" render={(props) => <Home {...props} numbers={files} wineId={files[0]}/>} />
           <Route path="/details/:id" render={(props) => <Details {...props} numbers={files} />} />
           <Route path="/composition/:compositionType/:id" render={(props) => <Composition {...props} numbers={files} />} />
-        </Switch>
+      </Switch>
       </div>
       </>
   )
