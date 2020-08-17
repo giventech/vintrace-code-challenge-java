@@ -40,22 +40,25 @@ ReactJS
 Spring Boot
 ** Spring DATA 
 ** Spring REST
-** React hook manage access to API and state
+** JUnit (Mockito)
 
-## Tech Stack 
 
 ## UI Logic 
 
-Server (Third Party Event)
+-- Server (Third Party Event)
+
 1) On HTTP Code 200 LOAD/RENDER Data in state
 2) Loading, when we are loading paginated data
 
-User Events 
+-- User Events 
 
 3) On Load more trigger infinite scrolling appending 
 4) Edit and Save document in the file 
 
-Data flows 
+Data flows
+
+Files are being loaded from  the application root folder
+and processed as JSON over HTTP for REACT Application rendering 
 
 
 ## Backend service layer 
