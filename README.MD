@@ -29,43 +29,39 @@ Design approach is mobile first.
 The mobile design presented would fit in full screen rearraging columns bas on breakpoint
 
 
-Feature inline edit
-
 ## Tech Stack 
 ReactJS
+
 ** Axios for promise base calls as it is supported by most browsers
 ** React router for page Flow
-** React Hooks manage access to API and state
-
-Spring Boot
-** Spring DATA 
-** Spring REST
-** JUnit (Mockito)
+** React Hooks manage Synchronisation Between UI State, and REST API state
 
 
 ## UI Logic 
 
--- Server (Third Party Event)
+Server (Third Party Event)
 
-1) On HTTP Code 200 LOAD/RENDER Data in state
-2) Loading, when we are loading paginated data
+* On HTTP Code 200 LOAD/RENDER Data in state
+* Loading, when we are loading paginated data
 
 -- User Events 
 
-3) On Load more trigger infinite scrolling appending 
-4) Edit and Save document in the file 
+* On Load more trigger infinite scrolling appending 
+* Edit and Save document in the file 
 
 Data flows
 
-Files are being loaded from  the application root folder
+* Files are being loaded from  the application root folder
 and processed as JSON over HTTP for REACT Application rendering 
 
 
-## Backend service layer 
+## REST-API  Backend with Spring Boot 
 
+Swagger documentation:
 
+http://localhost:8080/swagger-ui.html
 
+REST API Unit Testing (Done via Mockito)
 
-Infinite loop
 https://www.youtube.com/watch?v=NZKUirTtxcg
 https://bezkoder.com/react-hooks-crud-axios-api/

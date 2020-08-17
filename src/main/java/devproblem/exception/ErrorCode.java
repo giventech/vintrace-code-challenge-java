@@ -2,7 +2,8 @@ package devproblem.exception;
 
 public  enum ErrorCode {
     FILE_LOAD_OR_ACCESS_ERRO("WI-00001"),
-    INVALID_BREAK_DOWN_FILTER("WI-00002");
+    NO_COMPOISTION_FOR_WINE_ID("WI-00002"),
+    INVALID_COMPOSITION_TYPE("WI-00003");
 
     public final String label;
 

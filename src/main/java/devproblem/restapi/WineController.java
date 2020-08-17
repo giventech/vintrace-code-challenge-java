@@ -43,6 +43,14 @@ public class WineController {
         return ResponseEntity.ok(loadedWine);
     }
 
+    @Operation(summary = "Response code ", description = "Get composition", tags = {"load composition based on composition type requested"})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Success", content = {@Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = Object.class))}),
+            @ApiResponse(responseCode = "400", description = "Bad request", content = {@Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = ApiError.class))}),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = {@Content(mediaType = APPLICATION_JSON_VALUE, schema = @Schema(implementation = ApiError.class))}),
+            @ApiResponse(responseCode = "404", description = "Not found", content = {@Content(mediaType = APPLICATION_JSON_VALUE)}),
+            @ApiResponse(responseCode = "422", description = "Unprocessable entity", content = {@Content(mediaType = APPLICATION_JSON_VALUE)}),
+    })
 
     @GetMapping("/composition/{compositionType}/{aWineId}")
     @ResponseBody
@@ -58,10 +66,12 @@ public class WineController {
             } else if (compositionType.equals(CompositionType.VARIETY.getCompositionType())) {
                 return ResponseEntity.ok(Utils.getVarietyBreakdown(loadedWine));
             }  else if (compositionType.equals(CompositionType.YEAR_VARIETY.getCompositionType())) {
-            return ResponseEntity.ok(Utils.getStringifiedYearAndVarietyBreakdown(loadedWine));
+               return ResponseEntity.ok(Utils.getStringifiedYearAndVarietyBreakdown(loadedWine));
+            }  else {
+               throw new WineException("Composition Type does not exist", ErrorCode.INVALID_COMPOSITION_TYPE);
+            }
         }
-        }
-        throw new WineException("Wine composition break is invalid", ErrorCode.INVALID_BREAK_DOWN_FILTER);
+        throw new WineException("Wine composition  is invalid", ErrorCode.NO_COMPOISTION_FOR_WINE_ID);
         }
     }
 
