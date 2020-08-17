@@ -13,9 +13,11 @@ This is a step-by-step guide how to run the example:
 
 Change to the directory `vintrace-code-challenge-java` and run `mvn clean package` 
 
-## Run 
------
+## Run Excercise 1 
+------------------
     java -cp target/exerciseone-1.0-SNAPSHOT.jar devproblem.WineTest
+    
+  
     
 
 ## Output 
@@ -23,7 +25,21 @@ Change to the directory `vintrace-code-challenge-java` and run `mvn clean packag
 
  ![image](https://user-images.githubusercontent.com/17228294/89143038-8911bc00-d58c-11ea-9053-54b24a778027.png)
    
+
+## Run Excercise 2
+------------------
+    mvn spring-boot:run 
+
+## Access
+----------
+You can access the application on the port 8080 
+http://localhost:8080
+
+
 ## UI/UX Design
+
+
+
 
 Design approach is mobile first.
 The mobile design presented would fit in full screen rearraging columns bas on breakpoint
