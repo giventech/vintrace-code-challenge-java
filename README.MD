@@ -47,10 +47,10 @@ Real front implementation may differ based on User Feedback.
 ![image](https://user-images.githubusercontent.com/17228294/90465225-45a17b00-e152-11ea-8211-e57655766151.png)
 
 ### Before load more
-![image](https://user-images.githubusercontent.com/17228294/90465269-5d78ff00-e152-11ea-9f2b-f3edb5c526cf.png)
+![image](https://user-images.githubusercontent.com/17228294/90465324-7b466400-e152-11ea-9aec-8356c395121b.png)
 
 ### After load more
-![image](https://user-images.githubusercontent.com/17228294/90465324-7b466400-e152-11ea-9aec-8356c395121b.png)
+![image](https://user-images.githubusercontent.com/17228294/90465269-5d78ff00-e152-11ea-9f2b-f3edb5c526cf.png)
 
 ### Optional edit fields
 ![image](https://user-images.githubusercontent.com/17228294/90465353-8f8a6100-e152-11ea-894b-54941c717590.png)
