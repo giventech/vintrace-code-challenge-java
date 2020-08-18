@@ -13,13 +13,10 @@ This is a step-by-step guide how to run the example:
 
 Change to the directory `vintrace-code-challenge-java` and run `mvn clean package` 
 
-## Run Excercise 1 
+## Run Exercise 1 
 ------------------
     java -cp target/exerciseone-1.0-SNAPSHOT.jar devproblem.WineTest
     
-  
-    
-
 ## Output 
 ------
 
@@ -44,6 +41,7 @@ Real front implementation may differ based on User Feedback.
 
 ### Landing page
 ![image](https://user-images.githubusercontent.com/17228294/90465154-1b4fbd80-e152-11ea-9af5-dd3f99036b5c.png)
+
 ### Details and composition
 
 ![image](https://user-images.githubusercontent.com/17228294/90465225-45a17b00-e152-11ea-8211-e57655766151.png)
@@ -57,40 +55,26 @@ Real front implementation may differ based on User Feedback.
 ### Optional edit fields
 ![image](https://user-images.githubusercontent.com/17228294/90465353-8f8a6100-e152-11ea-894b-54941c717590.png)
 
+## Software Solution  
 
-
-## Tech Stack 
-ReactJS
-
-** Axios for promise base calls as it is supported by most browsers
-** React router for page Flow
-** React Hooks manage Synchronisation Between UI State, and REST API state
-
+The technology stack includes the below:
+1.  CSS responsive framework (Bootstrap 4,)
+1.  SPA React (react DOM, react hooks, router, state and axios, (Todo: Unit tests))
+2.  Spring boot ( Spring Data, Spring REST, JUnit+ Mockito, Open API Documentation)
+3.  Filed Data Access via service layer 
+4.  TODO: Unit testing via Jest or other
 
 ## UI Logic 
 
-Server (Third Party Event)
-
-* On HTTP Code 200 LOAD/RENDER Data in state
-* Loading, when we are loading paginated data
-
--- User Events 
-
-* On Load more trigger infinite scrolling appending 
-* Edit and Save document in the file 
-
-Data flows
-
-* Files are being loaded from  the application root folder
-and processed as JSON over HTTP for REACT Application rendering 
-
+* On react hooks (Server respond Code 200 + JSON Data) UI Re-render the message when 
+* On clicking  trigger loadmore  appending 
+* On clicking edit and Save document in the file 
 
 ## REST-API  Backend with Spring Boot 
 
 Swagger documentation:
 
 http://localhost:8080/swagger-ui.html
-
 REST API Unit Testing (Done via Mockito)
 
 https://www.youtube.com/watch?v=NZKUirTtxcg
