@@ -37,16 +37,26 @@ Ad can access the application on the port 8080
 http://localhost:8080
 ![image](https://user-images.githubusercontent.com/17228294/90369424-1c7bde80-e0af-11ea-88de-fd94b31f2d54.png)
 
-
-## UI/UX Design
+## UI/UX Prototyping 
 
 Design approach is mobile first. The design below have been thought of for the MVP
 Real front implementation may differ based on User Feedback.
+
+### Landing page
 ![image](https://user-images.githubusercontent.com/17228294/90465154-1b4fbd80-e152-11ea-9af5-dd3f99036b5c.png)
+### Details and composition
+
 ![image](https://user-images.githubusercontent.com/17228294/90465225-45a17b00-e152-11ea-8211-e57655766151.png)
+
+### Before load more
 ![image](https://user-images.githubusercontent.com/17228294/90465269-5d78ff00-e152-11ea-9f2b-f3edb5c526cf.png)
+
+### After load more
 ![image](https://user-images.githubusercontent.com/17228294/90465324-7b466400-e152-11ea-9aec-8356c395121b.png)
+
+### Optional edit fields
 ![image](https://user-images.githubusercontent.com/17228294/90465353-8f8a6100-e152-11ea-894b-54941c717590.png)
+
 
 
 ## Tech Stack 
@@ -83,3 +93,5 @@ http://localhost:8080/swagger-ui.html
 
 REST API Unit Testing (Done via Mockito)
 
+https://www.youtube.com/watch?v=NZKUirTtxcg
+https://bezkoder.com/react-hooks-crud-axios-api/
