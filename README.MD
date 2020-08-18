@@ -30,10 +30,12 @@ Change to the directory `vintrace-code-challenge-java` and run `mvn clean packag
 ------------------
     mvn spring-boot:run 
 
-## Access
+This may take a few minutes at the build embed Node and Npm installation
+## Output from browser)
 ----------
-You can access the application on the port 8080 
+Ad can access the application on the port 8080 
 http://localhost:8080
+![image](https://user-images.githubusercontent.com/17228294/90369424-1c7bde80-e0af-11ea-88de-fd94b31f2d54.png)
 
 
 ## UI/UX Design
@@ -81,5 +83,3 @@ http://localhost:8080/swagger-ui.html
 
 REST API Unit Testing (Done via Mockito)
 
-https://www.youtube.com/watch?v=NZKUirTtxcg
-https://bezkoder.com/react-hooks-crud-axios-api/
