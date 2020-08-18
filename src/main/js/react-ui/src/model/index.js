@@ -1,8 +1,8 @@
 const CompositionTypes = {
-    SUMMER: 'summer',
-    WINTER: 'winter',
-    SPRING: 'spring',
-    AUTUMN: 'autumn'
+    YEAR: 'YEAR',
+    VARIETY: 'VARIETY',
+    REGION: 'REGION',
+    YEAR_VARIETY: 'YEAR_VARIETY'
 }
 
 export default CompositionTypes;
