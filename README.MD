@@ -38,11 +38,13 @@ http://localhost:8080
 
 ## UI/UX Design
 
-
-
-
-Design approach is mobile first.
-The mobile design presented would fit in full screen rearraging columns bas on breakpoint
+Design approach is mobile first. The design below have been thought of for the MVP
+Real front implementation may differ based on User Feedback.
+![image](https://user-images.githubusercontent.com/17228294/90465154-1b4fbd80-e152-11ea-9af5-dd3f99036b5c.png)
+![image](https://user-images.githubusercontent.com/17228294/90465225-45a17b00-e152-11ea-8211-e57655766151.png)
+![image](https://user-images.githubusercontent.com/17228294/90465269-5d78ff00-e152-11ea-9f2b-f3edb5c526cf.png)
+![image](https://user-images.githubusercontent.com/17228294/90465324-7b466400-e152-11ea-9aec-8356c395121b.png)
+![image](https://user-images.githubusercontent.com/17228294/90465353-8f8a6100-e152-11ea-894b-54941c717590.png)
 
 
 ## Tech Stack 
