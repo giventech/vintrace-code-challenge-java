@@ -18,3 +18,7 @@ COPY . .
 CMD ["npm", "start"]
 
 #Package the application to serve the app
+FROM nginx:1.12-alpine
+COPY --from=development /usr/src/app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
