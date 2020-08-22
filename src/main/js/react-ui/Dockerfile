@@ -12,10 +12,10 @@ COPY ./package-lock.json ./
 RUN npm install 
 RUN npm install react-scripts@latest -g 
 
-COPY . .
+COPY ./ /usr/src/app
 
 # start app
-CMD ["npm", "start"]
+RUN npm run build
 
 #Package the application to serve the app
 FROM nginx:1.12-alpine
